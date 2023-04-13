@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "cli-translations": "./scripts/translations/cli_translations.py",
+    "cli-translations": "./scripts/cli_translations.py",
     "test-js": "./node_modules/.bin/jest --rootDir=./ --config=jest.config.js"
   },
   "dependencies": {

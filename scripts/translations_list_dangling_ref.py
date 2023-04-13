@@ -1,6 +1,6 @@
 import subprocess
 from pylib.file.file_utils import FileUtils
-from scripts.translations.translations_util import get_translation_files
+from scripts.translations_util import get_translation_files
 
 
 def translations_list_dangling_ref() -> None:
@@ -21,7 +21,7 @@ def translations_list_dangling_ref() -> None:
     files_arg = "'%s'" % ("' '".join(filenames))
 
     subprocess.run(
-        f'node scripts/translations/referencer/main.js {files_arg}',
+        f'node scripts/referencer/main.js {files_arg}',
         cwd=FileUtils.GetSrcRoot(),
         shell=True,
         check=True,

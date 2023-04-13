@@ -1,13 +1,15 @@
 import subprocess
 from pylib.file.file_utils import FileUtils
-from scripts.translations.translations_util import get_translation_files
+from scripts.translations_util import get_translation_files
 
 
-def translations_add_locale(locale: str) -> None:
-    '''This adds the new locale to the project's i18n library. It will:
+def translations_list_dangling(base_locale: str = 'en') -> None:
+    '''This command lists all existing i18n.js files that contain dangling
+    translations. It will:
     1. Find all directory-level i18n.js files.
-    2. Insert an empty translation object for the new locale
-    into the `translations` dictionary in each file.
+    2. For each file, check that every non-base translation id has a
+       counterpart id in the base translation.
+    3. Print unmatched ids.
     '''
     print('Scanning files...')
     filenames = get_translation_files(True)
@@ -19,7 +21,7 @@ def translations_add_locale(locale: str) -> None:
     files_arg = "'%s'" % ("' '".join(filenames))
 
     subprocess.run(
-        f'node scripts/translations/localeAdder/main.js {locale} {files_arg}',
+        f'node scripts/synchronizer/danglingMain.js {base_locale} {files_arg}',
         cwd=FileUtils.GetSrcRoot(),
         shell=True,
         check=True,

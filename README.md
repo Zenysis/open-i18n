@@ -178,7 +178,7 @@ To add a new locale, simply run `yarn cli-translations add_locale --locale <code
 
 # Contribution Suggestions
 
-- [ ] Expand reference capabilities (i.e. `<I18N.Ref>` and `I18N.textById()`) to accept identifiers, not just string literals, as translations ids. See NOTEs in `scripts/translations/collectReferencesFromFile.js` and remember that `getPropStringFromI18NJSX` will need to return non-string props.
-- [ ] Refactor `_checkForReferenceMatch` in `scripts/translations/listDanglingReferences.js` to build a set of all ids for faster lookup.
-- [ ] Refactor `_findFilesThatImportI18N` in `scripts/translations/generateTranslations.js` to use ripgrep `rg` for performance e.g. `rg -l -t js '^import I18N' '${process.cwd()}/web/client'`
+- [ ] Expand reference capabilities (i.e. `<I18N.Ref>` and `I18N.textById()`) to accept identifiers, not just string literals, as translations ids. See NOTEs in `scripts/collectReferencesFromFile.js` and remember that `getPropStringFromI18NJSX` will need to return non-string props.
+- [ ] Refactor `_checkForReferenceMatch` in `scripts/listDanglingReferences.js` to build a set of all ids for faster lookup.
+- [ ] Refactor `_findFilesThatImportI18N` in `scripts/generateTranslations.js` to use ripgrep `rg` for performance e.g. `rg -l -t js '^import I18N' '${process.cwd()}/web/client'`
 - [ ] Adjust locale codes to comply with ICU standard: https://www.localeplanet.com/icu/

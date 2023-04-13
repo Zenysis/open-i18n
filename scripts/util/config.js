@@ -23,7 +23,7 @@ module.exports = {
   I18N_ROOT: 'web/client',
 
   /** The translation file template */
-  I18N_TEMPLATE_FILEPATH: 'scripts/translations/generator/i18n.template.txt',
+  I18N_TEMPLATE_FILEPATH: 'scripts/generator/i18n.template.txt',
 
   /** The import root for files in the JS codebase */
   IMPORT_ROOT: `${process.cwd()}/web/client`,

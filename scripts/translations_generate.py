@@ -51,7 +51,7 @@ def translations_generate(verbose: bool = True) -> None:
     files_arg = "'%s'" % ("' '".join(filenames))
     verbose_arg = '--verbose' if verbose else ''
     subprocess.run(
-        f'node scripts/translations/generator/main.js {verbose_arg} {files_arg}',
+        f'node scripts/generator/main.js {verbose_arg} {files_arg}',
         cwd=FileUtils.GetSrcRoot(),
         shell=True,
         check=True,

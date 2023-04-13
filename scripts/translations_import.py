@@ -14,7 +14,7 @@ def translations_import(locale: str, input_file: str) -> None:
     4. Write (id, translated value) to the appropriate i18n.js files.
     '''
     subprocess.run(
-        f'node scripts/translations/importer/main.js {locale} {input_file}',
+        f'node scripts/importer/main.js {locale} {input_file}',
         cwd=FileUtils.GetSrcRoot(),
         shell=True,
         check=True,

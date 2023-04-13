@@ -1,11 +1,11 @@
 import subprocess
 from pylib.base.term_color import TermColor
 from pylib.file.file_utils import FileUtils
-from scripts.translations.translations_generate import translations_generate
+from scripts.translations_generate import translations_generate
 
 I18N_ROOT = 'web/client'
 SRC_ROOT = FileUtils.GetSrcRoot()
-TRANSLATIONS_MAIN = FileUtils.GetAbsPathForFile('scripts/translations/watcher/main.js')
+TRANSLATIONS_MAIN = FileUtils.GetAbsPathForFile('scripts/watcher/main.js')
 
 
 def translations_watch(verbose: bool = False) -> None:

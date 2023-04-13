@@ -3,18 +3,18 @@ import sys
 from pylib.base.flags import Flags
 
 from scripts.cli_util.commands import Command
-from scripts.translations.translations_export import translations_export
-from scripts.translations.translations_generate import translations_generate
-from scripts.translations.translations_watch import translations_watch
-from scripts.translations.translations_list_dangling import translations_list_dangling
-from scripts.translations.translations_list_dangling_ref import (
+from scripts.translations_export import translations_export
+from scripts.translations_generate import translations_generate
+from scripts.translations_watch import translations_watch
+from scripts.translations_list_dangling import translations_list_dangling
+from scripts.translations_list_dangling_ref import (
     translations_list_dangling_ref,
 )
-from scripts.translations.translations_list_out_of_sync import (
+from scripts.translations_list_out_of_sync import (
     translations_list_out_of_sync,
 )
-from scripts.translations.translations_import import translations_import
-from scripts.translations.translations_add_locale import translations_add_locale
+from scripts.translations_import import translations_import
+from scripts.translations_add_locale import translations_add_locale
 
 
 def main():
