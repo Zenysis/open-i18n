@@ -1,23 +1,23 @@
 import subprocess
-from pylib.base.term_color import TermColor
-from pylib.file.file_utils import FileUtils
+
 from scripts.translations_generate import translations_generate
+from scripts.translations_util import find_src_root, get_absolute_filepath
 
 I18N_ROOT = 'web/client'
-SRC_ROOT = FileUtils.GetSrcRoot()
-TRANSLATIONS_MAIN = FileUtils.GetAbsPathForFile('scripts/watcher/main.js')
+SRC_ROOT = find_src_root()
+TRANSLATIONS_MAIN = get_absolute_filepath('scripts/watcher/main.js')
 
 
-def translations_watch(verbose: bool = False) -> None:
+def translations_watch(args) -> None:
     '''This command starts a watchman server that will send a filepath to the
     watcher script every time a file changes. The watcher script will handle
     generating translations for the modified file.
     '''
-    print(TermColor.ColorStr('Starting translations watch server...', 'YELLOW'))
-    verbose_arg = '--verbose' if verbose else ''
+    print('Starting translations watch server...')
+    verbose_arg = '--verbose' if args.verbose else ''
 
     # first, generate all translations to make sure we are up-to-date
-    translations_generate(verbose)
+    translations_generate(args)
 
     # now start up the watchman server to detect any new changes
     subprocess.run(

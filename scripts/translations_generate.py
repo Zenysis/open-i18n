@@ -1,6 +1,7 @@
 from typing import List
 import subprocess
-from pylib.file.file_utils import FileUtils
+
+from scripts.translations_util import find_src_root
 
 
 def get_i18n_files() -> List[str]:
@@ -22,7 +23,7 @@ def get_i18n_files() -> List[str]:
                 'i18n.js',
                 '-e',
                 'import I18N',
-                '%s/web/client' % FileUtils.GetSrcRoot(),
+                '%s/web/client' % find_src_root(),
             ],
             stdout=subprocess.PIPE,
         )
@@ -32,7 +33,7 @@ def get_i18n_files() -> List[str]:
     return results.splitlines()
 
 
-def translations_generate(verbose: bool = True) -> None:
+def translations_generate(args) -> None:
     '''This command generates all necessary i18n.js files. It will:
     1. Find all files that use the I18N component
     2. Generate a list of all translations found in all those files
@@ -49,10 +50,10 @@ def translations_generate(verbose: bool = True) -> None:
     print(f'Found {num_files} {pluralized_file} that import I18N')
 
     files_arg = "'%s'" % ("' '".join(filenames))
-    verbose_arg = '--verbose' if verbose else ''
+    verbose_arg = '--verbose' if args.verbose else ''
     subprocess.run(
         f'node scripts/generator/main.js {verbose_arg} {files_arg}',
-        cwd=FileUtils.GetSrcRoot(),
+        cwd=find_src_root(),
         shell=True,
         check=True,
     )
