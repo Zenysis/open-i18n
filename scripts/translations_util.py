@@ -1,6 +1,6 @@
 import os
 import subprocess
-from typing import List
+from typing import List, Optional
 
 
 def find_src_root() -> str:
@@ -16,7 +16,7 @@ def find_src_root() -> str:
     return dir
 
 
-def get_absolute_filepath(filename: str) -> str:
+def get_absolute_filepath(filename: str) -> Optional[str]:
     """Return the absolute path for the filename, if it exists."""
     if not filename:
         return None
