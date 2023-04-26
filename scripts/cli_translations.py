@@ -140,7 +140,6 @@ def main():
     add_locale_parser.set_defaults(func=translations_add_locale)
 
     args = parser.parse_args()
-    print(args)
     if args.subcommand is None:
         parser.print_help()
     else:

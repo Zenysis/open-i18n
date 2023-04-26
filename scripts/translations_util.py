@@ -42,11 +42,11 @@ def get_translation_files(exclude_root: bool = False) -> List[str]:
     Returns:
         List[str]
     '''
-    root_dir = '%s/web/client' % find_src_root()
+    root_dir = f'{find_src_root()}/web/client'
     find_args = ['find', root_dir, '-name', 'i18n.js']
 
     if exclude_root:
-        find_args += ['-not', '-path', '%s/i18n.js' % root_dir]
+        find_args += ['-not', '-path', f'{root_dir}/i18n.js']
 
     results: str = (
         subprocess.Popen(find_args, stdout=subprocess.PIPE)
