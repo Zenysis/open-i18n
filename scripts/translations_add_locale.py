@@ -1,9 +1,10 @@
 import subprocess
+from argparse import Namespace
 
 from scripts.translations_util import get_translation_files, find_src_root
 
 
-def translations_add_locale(args) -> None:
+def translations_add_locale(args: Namespace) -> None:
     '''This adds the new locale to the project's i18n library. It will:
     1. Find all directory-level i18n.js files.
     2. Insert an empty translation object for the new locale

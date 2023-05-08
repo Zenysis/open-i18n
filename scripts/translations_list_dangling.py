@@ -1,9 +1,10 @@
 import subprocess
+from argparse import Namespace
 
 from scripts.translations_util import get_translation_files, find_src_root
 
 
-def translations_list_dangling(args) -> None:
+def translations_list_dangling(args: Namespace) -> None:
     '''This command lists all existing i18n.js files that contain dangling
     translations. It will:
     1. Find all directory-level i18n.js files.

@@ -1,4 +1,5 @@
 import subprocess
+from argparse import Namespace
 
 from scripts.translations_generate import translations_generate
 from scripts.translations_util import find_src_root, get_absolute_filepath
@@ -8,7 +9,7 @@ SRC_ROOT = find_src_root()
 TRANSLATIONS_MAIN = get_absolute_filepath('scripts/watcher/main.js')
 
 
-def translations_watch(args) -> None:
+def translations_watch(args: Namespace) -> None:
     '''This command starts a watchman server that will send a filepath to the
     watcher script every time a file changes. The watcher script will handle
     generating translations for the modified file.

@@ -1,9 +1,10 @@
 import subprocess
+from argparse import Namespace
 
 from scripts.translations_util import find_src_root
 
 
-def translations_import(args) -> None:
+def translations_import(args: Namespace) -> None:
     '''This command imports all translations in `filename` and adds the
     translated values to the appropriate i18n.js files.
     1. Open the file at `filename` and validate that there is at least

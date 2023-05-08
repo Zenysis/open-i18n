@@ -1,9 +1,10 @@
 import subprocess
+from argparse import Namespace
 
 from scripts.translations_util import get_translation_files, find_src_root
 
 
-def translations_export(args) -> None:
+def translations_export(args: Namespace) -> None:
     '''This command exports all translations of a given `locale` to
     a specified output CSV.
     1. Find all i18n.js files

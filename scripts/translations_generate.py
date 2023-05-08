@@ -1,5 +1,6 @@
-from typing import List
 import subprocess
+from argparse import Namespace
+from typing import List
 
 from scripts.translations_util import find_src_root
 
@@ -33,7 +34,7 @@ def get_i18n_files() -> List[str]:
     return results.splitlines()
 
 
-def translations_generate(args) -> None:
+def translations_generate(args: Namespace) -> None:
     '''This command generates all necessary i18n.js files. It will:
     1. Find all files that use the I18N component
     2. Generate a list of all translations found in all those files
