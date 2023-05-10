@@ -2,9 +2,7 @@
 
 TODO — publishing library
 
-- [ ] Replace use of internal python libraries in scripts
 - [ ] Generalize references to `web/client` and remove root directory dependencies
-
 - [ ] Setup/install instructions
 - [ ] Demo usage
 

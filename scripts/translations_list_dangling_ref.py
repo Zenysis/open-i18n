@@ -1,9 +1,9 @@
 import subprocess
-from pylib.file.file_utils import FileUtils
-from scripts.translations_util import get_translation_files
+
+from scripts.translations_util import get_translation_files, find_src_root
 
 
-def translations_list_dangling_ref() -> None:
+def translations_list_dangling_ref(_args) -> None:
     '''This command lists all translation references that do not reference an
        existing translation.
     1. Find all directory-level i18n.js files and generate a list of all
@@ -22,7 +22,7 @@ def translations_list_dangling_ref() -> None:
 
     subprocess.run(
         f'node scripts/referencer/main.js {files_arg}',
-        cwd=FileUtils.GetSrcRoot(),
+        cwd=find_src_root(),
         shell=True,
         check=True,
     )

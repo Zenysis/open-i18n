@@ -1,9 +1,10 @@
 import subprocess
-from pylib.file.file_utils import FileUtils
-from scripts.translations_util import get_translation_files
+from argparse import Namespace
+
+from scripts.translations_util import get_translation_files, find_src_root
 
 
-def translations_list_dangling(base_locale: str = 'en') -> None:
+def translations_list_dangling(args: Namespace) -> None:
     '''This command lists all existing i18n.js files that contain dangling
     translations. It will:
     1. Find all directory-level i18n.js files.
@@ -11,6 +12,8 @@ def translations_list_dangling(base_locale: str = 'en') -> None:
        counterpart id in the base translation.
     3. Print unmatched ids.
     '''
+    base_locale = args.base_locale or 'en'
+
     print('Scanning files...')
     filenames = get_translation_files(True)
 
@@ -22,7 +25,7 @@ def translations_list_dangling(base_locale: str = 'en') -> None:
 
     subprocess.run(
         f'node scripts/synchronizer/danglingMain.js {base_locale} {files_arg}',
-        cwd=FileUtils.GetSrcRoot(),
+        cwd=find_src_root(),
         shell=True,
         check=True,
     )

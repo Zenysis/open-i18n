@@ -1,9 +1,9 @@
 import subprocess
-from pylib.file.file_utils import FileUtils
-from scripts.translations_util import get_translation_files
+
+from scripts.translations_util import get_translation_files, find_src_root
 
 
-def translations_list_out_of_sync() -> None:
+def translations_list_out_of_sync(_args) -> None:
     '''This finds all i18n.js files that contains @outOfSync tags and prints
     the tagged translations.
     1. Find all i18n.js files
@@ -21,7 +21,7 @@ def translations_list_out_of_sync() -> None:
 
     subprocess.run(
         f'node scripts/synchronizer/outOfSyncMain.js {files_arg}',
-        cwd=FileUtils.GetSrcRoot(),
+        cwd=find_src_root(),
         shell=True,
         check=True,
     )

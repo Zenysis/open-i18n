@@ -1,11 +1,10 @@
 import subprocess
-from pylib.file.file_utils import FileUtils
-from scripts.translations_util import get_translation_files
+from argparse import Namespace
+
+from scripts.translations_util import get_translation_files, find_src_root
 
 
-def translations_export(
-    locale: str, out: str, missing: bool, out_of_sync: bool
-) -> None:
+def translations_export(args: Namespace) -> None:
     '''This command exports all translations of a given `locale` to
     a specified output CSV.
     1. Find all i18n.js files
@@ -21,17 +20,17 @@ def translations_export(
     print(f'Found {num_files} i18n.js {pluralized_file}')
 
     args = [
-        '--missing' if missing else '',
-        '--out_of_sync' if out_of_sync else '',
-        locale,
-        out,
+        '--missing' if args.missing else '',
+        '--out_of_sync' if args.out_of_sync else '',
+        args.locale,
+        args.out,
         *(f"'{f}'" for f in filenames),
     ]
     args_str = ' '.join(args)
 
     subprocess.run(
         f'node scripts/exporter/main.js {args_str}',
-        cwd=FileUtils.GetSrcRoot(),
+        cwd=find_src_root(),
         shell=True,
         check=True,
     )
