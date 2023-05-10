@@ -2,11 +2,14 @@ import subprocess
 from argparse import Namespace
 
 from scripts.translations_generate import translations_generate
-from scripts.translations_util import find_src_root, get_absolute_filepath
+from scripts.translations_util import (
+    find_src_root,
+    get_absolute_filepath,
+    I18N_ROOT,
+)
 
-I18N_ROOT = 'web/client'
-SRC_ROOT = find_src_root()
 TRANSLATIONS_MAIN = get_absolute_filepath('scripts/watcher/main.js')
+SRC_ROOT = find_src_root()
 
 
 def translations_watch(args: Namespace) -> None:

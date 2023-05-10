@@ -2,11 +2,11 @@ import subprocess
 from argparse import Namespace
 from typing import List
 
-from scripts.translations_util import find_src_root
+from translations_util import find_src_root, I18N_ROOT
 
 
 def get_i18n_files() -> List[str]:
-    '''Get a list of all files in web/client that have `import I18N` in them.
+    '''Get a list of all files in the project that have `import I18N` in them.
 
     Returns:
         List[str]
@@ -24,7 +24,7 @@ def get_i18n_files() -> List[str]:
                 'i18n.js',
                 '-e',
                 'import I18N',
-                '%s/web/client' % find_src_root(),
+                f'{find_src_root()}/{I18N_ROOT}',
             ],
             stdout=subprocess.PIPE,
         )

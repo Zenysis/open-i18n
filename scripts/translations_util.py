@@ -2,6 +2,9 @@ import os
 import subprocess
 from typing import List, Optional
 
+# Relative path from project root to JS codebase (js/jsx files that import I18N)
+I18N_ROOT = 'web/client'
+
 
 def find_src_root() -> str:
     '''Return the project source root directory.'''
@@ -34,15 +37,15 @@ def get_absolute_filepath(filename: str) -> Optional[str]:
 
 
 def get_translation_files(exclude_root: bool = False) -> List[str]:
-    '''Get a list of all files in web/client with the filename `i18n.js`.
+    '''Get a list of all files in project with the filename `i18n.js`.
 
     Args:
-        exclude_root: if true, exclude top-level `/web/client/i18n.js`
+        exclude_root: if true, exclude top-level `i18n.js` file.
 
     Returns:
         List[str]
     '''
-    root_dir = f'{find_src_root()}/web/client'
+    root_dir = f'{find_src_root()}/{I18N_ROOT}'
     find_args = ['find', root_dir, '-name', 'i18n.js']
 
     if exclude_root:

@@ -16,6 +16,7 @@ const {
   I18N_FILENAME,
   I18N_ROOT,
   I18N_TEMPLATE_FILEPATH,
+  IMPORT_ROOT,
   PRETTIER_CONFIG,
 } = require("../util/config");
 const {
@@ -43,7 +44,7 @@ function _findFilesThatImportI18N() {
   if (FILES_THAT_IMPORT_I18N.length === 0) {
     return new Promise((resolve) => {
       exec(
-        `grep -rlw --include '*.js' --include '*.jsx' --exclude '${I18N_FILENAME}' -e 'import I18N' '${process.cwd()}/web/client'`,
+        `grep -rlw --include '*.js' --include '*.jsx' --exclude '${I18N_FILENAME}' -e 'import I18N' '${IMPORT_ROOT}'`,
         (err, stdout) => {
           if (err) {
             resolve([]);

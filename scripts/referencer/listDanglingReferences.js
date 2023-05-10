@@ -3,7 +3,7 @@ const collectTranslationsFromI18NFile = require("../exporter/collectTranslations
 const collectReferencesFromFile = require("./collectReferencesFromFile");
 const LogColor = require("../util/LogColor");
 const { getInvalidI18NFilepaths, readFile } = require("../util/io");
-const { I18N_FILENAME } = require("../util/config");
+const { I18N_FILENAME, IMPORT_ROOT } = require("../util/config");
 /**
  * Find all files that import the I18N library, *except* for files named i18n.js.
  * Store all files in the FILES_THAT_IMPORT_I18N cache.
@@ -13,7 +13,7 @@ function _findFilesThatImportI18N() {
   const filesThatImportI18N = [];
   return new Promise((resolve) => {
     exec(
-      `grep -rlw --include '*.js' --include '*.jsx' --exclude '${I18N_FILENAME}' -e 'import I18N' '${process.cwd()}/web/client'`,
+      `grep -rlw --include '*.js' --include '*.jsx' --exclude '${I18N_FILENAME}' -e 'import I18N' '${IMPORT_ROOT}'`,
       (err, stdout) => {
         if (err) {
           resolve([]);

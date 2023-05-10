@@ -16,17 +16,20 @@ module.exports = {
     TRANSLATION: 'translation',
   },
 
-  /** The name to give to any generated translation files */
+  /** Name given to any generated translation files */
   I18N_FILENAME: 'i18n.js',
 
-  /** Where to place the root i18n file relative to the project root */
-  I18N_ROOT: 'web/client',
-
-  /** The translation file template */
+  /** Translation file template location */
   I18N_TEMPLATE_FILEPATH: 'scripts/generator/i18n.template.txt',
 
-  /** The import root for files in the JS codebase */
-  IMPORT_ROOT: `${process.cwd()}/web/client`,
+  /**
+   * Relative path from project root to JS codebase (js/jsx files that
+   * import I18N). Will also be the location of the root i18n file.
+   */
+  I18N_ROOT: 'web/client',
+
+  /** Full import root for files in the JS codebase */
+  IMPORT_ROOT: `${process.cwd()}/${I18N_ROOT}`,
 
   /** Comment token to designate a translated value that may be outdated */
   OUT_OF_SYNC_TOKEN: ' @outOfSync',
